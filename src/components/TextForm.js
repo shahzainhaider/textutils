@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { Navigate } from "react-router-dom";
 
 export default function TextForm(props) {
 
@@ -30,13 +29,9 @@ export default function TextForm(props) {
     let newtext = document.getElementById('mybox')
     newtext.select()
     navigator.clipboard.writeText(newtext.value)
-    props.showalert('Removed Extra Spaces','success')
+    document.getSelection().removeAllRanges()
+    props.showalert('Copied text','success')
   };
-
-  // const copytext=(text)=>{
-  //   let newtext=navigator.clipboard.writeText(text)
-  //   setText(newtext)
-  // };
 
   const change = (event) => {
     setText(event.target.value);
@@ -61,28 +56,25 @@ export default function TextForm(props) {
           style={{backgroundColor:props.mode==='light'?'white':'#171717',
                   color:props.mode==='light'?'black':'white'}}
         ></textarea>
-        <button className="btn btn-primary mx-2 my-2 " onClick={uppercase}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2 " onClick={uppercase}>
           Convert To UpperCase
         </button>
-        <button className="btn btn-primary mx-2 my-2 " onClick={lowercase}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2 " onClick={lowercase}>
           Convert To LowerCase
         </button>
-        <button className="btn btn-primary mx-2 my-2 " onClick={removeExtra}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2 " onClick={removeExtra}>
           Remove Extra Space
         </button>
-        <button className="btn btn-primary mx-2 my-2 " onClick={copyText}>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2 " onClick={copyText}>
           Copy Text
         </button>
-        {/* <button className="btn btn-primary mx-2 " onClick={copytext}>
-          Copy Text
-        </button> */}
-        <button className="btn btn-danger mx-2 my-2 " onClick={del}>
+        <button disabled={text.length===0} className="btn btn-danger mx-2 my-2 " onClick={del}>
           Delete
         </button>
       </div>
       <div className={`container text-${props.mode==='light'?'dark':'light'}`}>
         <h2>Your Text Counter</h2>
-        <p>Total Words:<b> {text.split(' ').length}</b></p>
+        <p>Total Words:<b> {text.split(' ').filter((Element)=>{return Element.length!==0}).length}</b></p>
         <p>Total Characters:<b> {text.length}</b></p>
 
       </div>
