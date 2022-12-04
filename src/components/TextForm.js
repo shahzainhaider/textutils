@@ -74,7 +74,7 @@ export default function TextForm(props) {
       </div>
       <div className={`container text-${props.mode==='light'?'dark':'light'}`}>
         <h2>Your Text Counter</h2>
-        <p>Total Words:<b> {text.split(' ').filter((Element)=>{return Element.length!==0}).length}</b></p>
+        <p>Total Words:<b> {text.split(/\s+/).filter((Element)=>{return Element.length!==0}).length}</b></p>
         <p>Total Characters:<b> {text.length}</b></p>
 
       </div>

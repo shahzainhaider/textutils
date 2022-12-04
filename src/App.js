@@ -3,15 +3,6 @@ import Navbar from './components/Navbar.js';
 import TextForm from './components/TextForm.js';
 import React, {useState} from 'react'
 import Alert from './components/Alert';
-//  import About from './components/About';
-//  import {
-//    BrowserRouter as Router,
-//    Route,
-//     // Link,
-//    Routes
-//  } from "react-router-dom";
-
-
 
 
 function App() {
@@ -45,17 +36,9 @@ function App() {
   }
   return (
     <>
-       {/* <Router>  */}
     <Navbar mode={mode} toggle={toggle}/>
     <Alert alert={alert}/>
     <TextForm mode={mode} showalert={showalert}/>
-    {/* <div>
-         <Routes> 
-           <Route exact path="/" element={<TextForm mode={mode} showalert={showalert}/>}/>
-           <Route exact path="/about" element={<About mode={mode}/>}/> 
-         </Routes>
-    </div>
-       </Router>  */}
     </>
   );
 }
